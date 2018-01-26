@@ -107,8 +107,12 @@ class MapView extends Component {
       url: 'https://js.arcgis.com/4.6/'
     };
 
+    const divStyle = {
+      height: '100%'
+    };
+
     return(
-      <div className={(this.state.isDisplayed? 'show' : 'hidden')}>
+      <div style={divStyle} className={(this.state.isDisplayed? 'show' : 'hidden')}>
         <EsriLoaderReact
          options={options}
          modulesToLoad={[
