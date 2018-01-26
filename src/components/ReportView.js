@@ -306,11 +306,14 @@ class ReportView extends Component {
 
         { this.state.pageStatus === 5 &&
           <div className="newCommentPage">
-            <div>
-              <img className = "Owl" src={owl} />
+            <div className="thankContainer">
+              <img className = "owl" src={owl} />
               <h1 className="header">Thank you for your contribution! </h1>
             </div>
-            <RaisedButton label="next" onClick={this.handleBackToList}/>
+            <div className="buttonContainer">
+              <RaisedButton label="continue to browse" primary={true}  onClick={this.handleBackToList}/>
+              <RaisedButton label="track status"/>
+            </div>
           </div>
         }
 

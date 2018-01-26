@@ -173,8 +173,9 @@ html,body, #root{
       padding-top: 0px;
       .bottomBar{
         padding: 0px;
+        bottom: 5px;
         button {
-          width: 300px;
+          width: 300px!important;
         }
       }
     }
@@ -202,7 +203,7 @@ html,body, #root{
       height: 35px;
       padding: 0px 20px;
       width: calc(100% - 40px);
-      bottom: 10px;
+      bottom: 20px;
       display: flex;
       justify-content: flex-end;
     }
@@ -240,6 +241,26 @@ html,body, #root{
         font-size: 16px;
       }
     }
+  }
+
+}
+
+.thankContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 220px;
+  margin-top: 50px;
+  .owl{
+    width:80px;
+  }
+  .buttonContainer{
+    display: flex;
+    flex-direction: column
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
   }
 }
 

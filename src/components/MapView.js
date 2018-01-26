@@ -179,7 +179,7 @@ class MapView extends Component {
            });
 
            // Customize view UI
-           // view.ui.remove(["zoom","navigation-toggle"]);
+           view.ui.remove(["zoom","navigation-toggle", "compass"]);
 
            const gLayer = new GraphicsLayer();
            scene.add(gLayer);

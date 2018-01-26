@@ -32,7 +32,7 @@ class MapUIView extends Component {
     return (
       <div id="mapUIView">
         <div className="mapToggle">
-          <RaisedButton label="go to Report" onClick={this.goToReport}/>
+          <RaisedButton label="List View" onClick={this.goToReport}/>
         </div>
         <div className="commentCard">
           { this.state.currentSelection &&
