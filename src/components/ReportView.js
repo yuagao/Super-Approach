@@ -305,7 +305,7 @@ class ReportView extends Component {
         }
 
         { this.state.pageStatus === 5 &&
-          <div className="newCommentPage">
+          <div className="newCommentPage thankPage">
             <div className="thankContainer">
               <img className = "owl" src={owl} />
               <h1 className="header">Thank you for your contribution! </h1>
