@@ -11,6 +11,8 @@ import life from '../images/life_button.svg';
 import snow from '../images/snow_button.svg';
 import traffic from '../images/traffic_button.svg';
 import tree from '../images/tree_button.svg';
+import owl from '../images/owl.svg';
+import background from '../images/bg.png';
 
 class ReportView extends Component {
 
@@ -145,21 +147,34 @@ class ReportView extends Component {
     const styleHeight = {
       height: '100%'
     };
+    const bgStyle = {
+      backgroundImage:"url(" + background + ")",
+    };
     return (
       <div id="reportView" className="subPage">
         { this.state.pageStatus === 0 &&
           <div>
-            <div>
-              <h1>Hi There!</h1>
-              <h2>Help your neighborhood to grow by providing your feedback or helping evaluting the existing feedback</h2>
+            <div className="welcomeContainer flex" style={bgStyle}>
+              <span class="flex">
+                <img src={owl} alt="owl"/>
+                <h1 className="header">Hi There!</h1>
+              </span>
+              <p className="subHeader">Help your neighborhood to grow by just several clicks!</p>
             </div>
-            <div>
-              {this.featuresCount} Nearby Comments
+            <div class="actionContainer">
+              <FloatingActionButton onClick={this.handleAddNew} className='addBtn'>
+                <ContentAdd />
+              </FloatingActionButton>
+              <FloatingActionButton className='orderBtn'>
+                <i class="material-icons">track_changes</i>
+              </FloatingActionButton>
+              <div className="subHeader2">
+                {this.featuresCount} NEARYBY COMMENTS
+              </div>
+              <span className="mapBtn" onClick={this.goToMap}> Map View</span>
+
             </div>
-            <RaisedButton label="go to map" onClick={this.goToMap}/>
-            <FloatingActionButton onClick={this.handleAddNew}>
-              <ContentAdd />
-            </FloatingActionButton>
+
             <div>
               {listItems}
             </div>

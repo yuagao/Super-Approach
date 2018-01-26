@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import '../styles/App.css';
 import SplashView from './SplashView';
 import MapView from './MapView';
@@ -80,8 +81,14 @@ class App extends Component {
   }
 
   render() {
+    const muiTheme = getMuiTheme({
+      palette: {
+        primary1Color: '#26675B',
+      }
+    });
+
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="page">
           { this.state.pageStatus === 0 &&
             <SplashView onGetCurrentLocation={this.handleGetCurrentLocation}/>
