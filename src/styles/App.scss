@@ -167,6 +167,42 @@ html,body, #root{
     height: calc(100% - 255px);
     overflow-y: auto;
   }
+  .newCommentPage{
+    padding-top: 50px;
+    .header{
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    .previewImage{
+      width: 360px;
+      height: 360px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .categoryList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .category{
+      width: 150px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 92px;
+        height: 92px;
+      }
+      span{
+        @extend .body1
+      }
+    }
+  }
 }
 
 
