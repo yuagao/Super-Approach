@@ -40,6 +40,7 @@ class MapUIView extends Component {
               data={this.state.currentSelection}
               onCommentLike={this.handleCommentLike}
               isActionDisplayed={true}
+              cardMode={1}
             />
           }
         </div>

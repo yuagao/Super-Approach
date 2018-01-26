@@ -40,7 +40,14 @@ html,body, #root{
 }
 
 .commentCard {
+  margin-bottom: 15px;
+  .owl{
+    position: absolute;
+    top: -23px;
+    left: 16px;
+  }
   .cardActions{
+    border-top: 1px solid rgba(0,0,0,.08);
     button{
       width: 50%;
       margin: 0px!important;
@@ -51,8 +58,28 @@ html,body, #root{
   }
   .flex{
     flex-direction: row;
+    justify-content: space-between;
     .contentLeft{
-
+      display: flex;
+      flex-direction: column;
+      padding-right: 20px;
+      justify-content: space-between;
+      .category{
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 5px;
+      }
+      .content{
+        @extend .body1;
+        margin-bottom: 5px;
+      }
+      .time{
+        @extend .caption;
+      }
+      .status{
+        @extend .caption;
+      }
     }
     .contentRight{
       img{
@@ -156,7 +183,7 @@ html,body, #root{
     z-index: 10;
     bottom: 0px;
     width: 100%;
-
+    margin: 0px;
   }
 }
 
@@ -192,4 +219,18 @@ html,body, #root{
 .subHeader2{
   @extend .subHeader;
   font-weight: 600;
+}
+
+.body1{
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0,0,0,0.87);
+  line-height: 20px;
+}
+
+.caption{
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(0,0,0,0.54);
+  line-height: 16px;
 }

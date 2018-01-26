@@ -140,6 +140,7 @@ class ReportView extends Component {
           data={feature.attributes}
           isActionDisplayed = {true}
           onCommentLike={this.handleCommentLike}
+          cardMode={0}
         />
       );
     }
@@ -272,6 +273,7 @@ class ReportView extends Component {
                 data={this.currentSelection}
                 onCommentLike={()=>{}}
                 isActionDisplayed = {false}
+                cardMode={2}
               />
               <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
             </div>
