@@ -18,16 +18,12 @@ html,body, #root{
   display: flex;
   height: 100%;
   flex-direction: column;
+  background: #f8f8f8;
 }
 
 .subPage{
   height: 100%;
   width: 100%;
-}
-
-#splashView{
-  display: flex;
-  flex-direction: column;
 }
 
 .show{
@@ -49,6 +45,65 @@ html,body, #root{
     }
   }
 }
+
+.flex{
+  display: flex;
+}
+
+
+#splashView{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: 100%;
+  img {
+    margin-bottom: 30px;
+  }
+}
+
+#reportView {
+  .welcomeContainer{
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    .flex{
+      flex-direction: row;
+      align-items: flex-end;
+      img{
+        width: 35px;
+        margin-right: 10px;
+      }
+    }
+    .subHeader{
+      width: 250px;
+      text-align: center;
+      margin-top: 15px;
+    }
+    flex-direction: column;
+  }
+  .actionContainer{
+    .trackBtn{
+      button{
+        background: white;
+        color: #26675B;
+        .material-icon{
+          color: #26675B;
+        }
+      }
+    }
+    .mapBtn{
+      font-weight: 600;
+      font-size: 14px;
+      color: #26675B;
+      letter-spacing: 0;
+    }
+  }
+}
+
+
+
 
 #mapUIView{
   .mapToggle{
@@ -74,21 +129,26 @@ html,body, #root{
 }
 
 
+// Text style
 
 
-/*---------claudia--begin----------*/
-
-#reportView h1{
-font-family: 'Source Sans Pro';
-font-size:24px;
+.header{
+  font-weight: 600;
+  font-size: 24px;
+  color: rgba(0,0,0,0.87);
+  line-height: 31px;
+  margin: 0px;
 }
 
+.subHeader{
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0,0,0,0.54);
+  line-height: 24px;
+  margin: 0px;
+}
 
-
-
-
-
-
-/*---------claudia--end----------*/
-
-
+.subHeader2{
+  @extend .subHeader
+  font-weight: 600;
+}
