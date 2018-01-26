@@ -46,12 +46,15 @@ class App extends Component {
       pageStatus: 1
     })
     // Fake Location Info
-    this.setState({
-      queryPoint:{
-        x: this.fakeCurrentLocation.x,
-        y: this.fakeCurrentLocation.y
-      }
-    })
+    setTimeout(()=>{
+      this.setState({
+        queryPoint:{
+          x: this.fakeCurrentLocation.x,
+          y: this.fakeCurrentLocation.y
+        }
+      })
+    },700);
+
   }
 
   handleToggleToMapView = () => {
@@ -102,6 +105,7 @@ class App extends Component {
             queryPoint={this.state.queryPoint}
             onQueryResultsReturned={this.handleQueryResultsReturned}
             onMapClicked={this.handleMapClicked}
+            hideFeatures={false}
           />
       </div>
      </MuiThemeProvider>
