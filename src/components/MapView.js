@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EsriLoaderReact from 'esri-loader-react';
-import logo from '../images/logo.svg';
 import traffic from '../images/traffic_icon.svg';
 import dump from '../images/dump_icon.svg';
 import snow from '../images/snow_icon.svg';
@@ -13,10 +12,6 @@ class MapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      queryPoint: {
-        lat: this.props.queryPoint.x,
-        log: this.props.queryPoint.y
-      },
       queryPoint: this.props.queryPoint,
       isDisplayed: this.props.isDisplayed
     };
@@ -24,7 +19,7 @@ class MapView extends Component {
       view: null,
       map: null,
       featureLayer: null,
-      graphicsLayer: null,
+      graphicLayer: null,
       graphicClass: null,
       geometryEngineClass: null,
       pointClass: null,
@@ -36,7 +31,6 @@ class MapView extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('new props');
     if (nextProps.queryPoint !== this.state.queryPoint) {
       // Query features based on point
       this.queryFeature(nextProps.queryPoint);
@@ -69,7 +63,7 @@ class MapView extends Component {
       type: 'point',
       x: point.x,
       y: point.y,
-      z: 0
+      z: 20
     })
     const buffer = this.mapObjects.geometryEngineClass.geodesicBuffer(pt, 20000, "meters", true);
 
@@ -87,12 +81,24 @@ class MapView extends Component {
     });
   }
 
+  hideFeatures() {
+    this.mapObjects.featureLayer.visible = false;
+    const pt = this.mapObjects.pointClass({
+      type: 'point',
+      x: this.props.queryPoint.x,
+      y: this.props.queryPoint.y,
+      z: 20
+    })
+    this.renderCurrentLocation(pt);
+  }
+
+
   renderCurrentLocation(point) {
     const graphic = this.mapObjects.graphicClass({
       geometry: point,
       symbol: this.mapObjects.myLocationSymbol
     });
-    // this.mapObjects.graphicslayer.add(graphic);
+    this.mapObjects.graphicLayer.add(graphic);
   }
 
 
@@ -101,12 +107,15 @@ class MapView extends Component {
       view: view,
       map: map,
       featureLayer: featureLayer,
-      graphicsLayer: graphicsLayer,
+      graphicLayer: graphicsLayer,
       myLocationSymbol: myLocationSymbol,
       graphicClass: graphic,
       geometryEngineClass: geoEngine,
       pointClass: point
     };
+    if (this.props.hideFeatures){
+      this.hideFeatures();
+    }
   }
 
   exportQueryResults(response) {

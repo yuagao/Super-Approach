@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import TextField from 'material-ui/TextField';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import logo from '../images/logo.svg';
 import car from '../images/car_button.svg';
 import dump from '../images/dump_button.svg';
 import life from '../images/life_button.svg';
@@ -14,7 +13,7 @@ import traffic from '../images/traffic_button.svg';
 import tree from '../images/tree_button.svg';
 
 class ReportView extends Component {
-z
+
   constructor(props) {
     super(props);
     this.state = {
@@ -121,19 +120,10 @@ z
   }
 
   getTimeNow() {
-    var today = new Date();
-    var dd = today.getDate();
-
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-    if(dd<10){
-        dd='0'+dd;
-    };
-
-    if(mm<10){
-      mm='0'+mm;
-    };
-    var result = dd+'/'+mm+'/'+yyyy;
+    const today = new Date();
+    const date = today.toLocaleString('en-US', { month:'numeric', day: 'numeric', year: 'numeric'});
+    const time = today.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second:'numeric', hour12: true });
+    const result = date + ' '+ time;
     return result;
   }
 
@@ -184,38 +174,38 @@ z
               <span onClick={() => {
                   this.handleCategorySelected('Quality of Life')
                 }}>
-                <img src={life} />
+                <img src={life} alt=""/>
                 <span>Quality of Life</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Parking & Vehicles')
                 }}>
-                <img src={traffic} />
+                <img src={traffic} alt=""/>
                 <span>Parking & Vehicles</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Streets & Sidewalks')
                 }}>
-                <img src={car} />
+                <img src={car} alt=""/>
 
                 <span>Streets & Sidewalks</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Sanitation')
                 }}>
-              <img src={dump} />
+              <img src={dump} alt=""/>
                 <span>Sanitation</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Winter Conditions')
                 }}>
-              <img src={snow} />
+              <img src={snow} alt=""/>
                 <span>Winter Conditions</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Trees & Parks')
                 }}>
-                <img src={tree} />
+                <img src={tree} alt=""/>
                 <span>Trees & Parks</span>
               </span>
             </div>
