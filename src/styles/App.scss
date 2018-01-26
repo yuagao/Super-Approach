@@ -140,6 +140,7 @@ html,body, #root{
   margin: 0px;
 }
 
+
 .subHeader{
   font-weight: 400;
   font-size: 16px;
@@ -149,6 +150,6 @@ html,body, #root{
 }
 
 .subHeader2{
-  @extend .subHeader
+  @extend .subHeader;
   font-weight: 600;
 }
