@@ -18,7 +18,11 @@ class App extends Component {
       },
       featuresAround: null,
       currentSelection: null,
-      pageStatus: 0
+      pageStatus: 0,
+      commentLiked: {
+        id: null,
+        isLike: null,
+      }
     }
   }
 
@@ -67,6 +71,15 @@ class App extends Component {
     })
   }
 
+  handleCommentLike(id, isLike) {
+    // this.setState({
+    //   commentLiked: {
+    //     id: id,
+    //     isLike: isLike
+    //   }
+    // })
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -91,6 +104,7 @@ class App extends Component {
             isDisplayed={(this.state.pageStatus === 2? true : false)}
             currentLocation={this.state.currentLocation}
             queryPoint={this.state.queryPoint}
+            commentLiked={this.state.commentLiked}
             onQueryResultsReturned={this.handleQueryResultsReturned}
             onMapClicked={this.handleMapClicked}
           />

@@ -7,20 +7,25 @@ class CommentCardView extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.count = {
+      LikeIt: this.props.data.LikeIt,
+      DislikeIt: this.props.data.DislikeIt
+    };
   }
 
-  handleLikeCliked = () => {
-    this.props.onCommentLike(this.props.data.OBJECTID, true);
+  handleLikeClicked = () => {
+    this.count.LikeIt = this.count.LikeIt+ 1;
+    // this.forceUpdate();
   }
 
-  handleDislikeCliked = () => {
-    this.props.onCommentLike(this.props.data.OBJECTID, false);
+  handleDislikeClicked = () => {
+    this.count.DislikeIt = this.count.DislikeIt+ 1;
+    // this.forceUpdate();
   }
 
   render() {
     const labelStyle = {
-      'font-size': '12px'
+      fontSize: '12px'
     }
     return (
       <Card className="commentCard">
@@ -33,16 +38,16 @@ class CommentCardView extends Component {
         </CardText>
         <CardActions className="cardActions">
           <FlatButton
-            label={"I feel the same (" + this.props.data.LikeIt+ ")" }
+            label={"I feel the same (" + this.count.LikeIt+ ")" }
             labelStyle={labelStyle}
             icon={<FontIcon className="material-icons"> thumb_up</FontIcon>}
-            onclick={this.handleLikeCliked()}
+            onClick={this.handleLikeClicked()}
             />
           <FlatButton
-            label={"I don't think so (" + this.props.data.DislikeIt+ ")" }
+            label={"I don't think so (" + this.count.DislikeIt+ ")" }
             labelStyle={labelStyle}
             icon={<FontIcon className="material-icons"> thumb_down</FontIcon>}
-            onclick={this.handleDislikeCliked()}
+            onClick={this.handleDislikeClicked()}
           />
         </CardActions>
       </Card>

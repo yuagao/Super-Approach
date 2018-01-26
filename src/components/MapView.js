@@ -18,7 +18,8 @@ class MapView extends Component {
         log: this.props.queryPoint.y
       },
       queryPoint: this.props.queryPoint,
-      isDisplayed: this.props.isDisplayed
+      isDisplayed: this.props.isDisplayed,
+      commentLiked: this.props.commentLiked
     };
     this.mapObjects = {
       view: null,
@@ -50,6 +51,17 @@ class MapView extends Component {
         isDisplayed: nextProps.isDisplayed
       })
     }
+
+    if (nextProps.commentLike !== this.state.commentLike) {
+      this.updateComments(nextProps.commentLike);
+      this.setState({
+        commentLike: nextProps.commentLike
+      })
+    }
+  }
+
+  updateComments() {
+
   }
 
   queryFeature(point) {
