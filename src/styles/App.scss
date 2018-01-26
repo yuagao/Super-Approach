@@ -26,6 +26,11 @@ html,body, #root{
   width: 100%;
 }
 
+.container{
+  height: 100%;
+  width: 100%;
+}
+
 .show{
   display: block;
 }
@@ -84,14 +89,33 @@ html,body, #root{
     flex-direction: column;
   }
   .actionContainer{
-    .trackBtn{
+    height: 85px;
+    background: #f8f8f8;
+    position: relative;
+    .addBtn{
+      position: absolute;
+      right: 10px;
+      top: -25px;
+    }
+    .orderBtn{
+      position: absolute;
+      right: 80px;
+      top: -25px;
       button{
-        background: white;
-        color: #26675B;
-        .material-icon{
-          color: #26675B;
+        background-color: white!important;
+        .material-icons{
+          fill: #26675B!important;
+          color: #26675B!important;
         }
       }
+    }
+    .flex{
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0px 10px;
+      position: absolute;
+      width: calc(100% - 20px);
+      bottom: 10px;
     }
     .mapBtn{
       font-weight: 600;
@@ -99,6 +123,10 @@ html,body, #root{
       color: #26675B;
       letter-spacing: 0;
     }
+  }
+  .commentList {
+    height: calc(100% - 255px);
+    overflow-y: auto;
   }
 }
 
@@ -149,6 +177,6 @@ html,body, #root{
 }
 
 .subHeader2{
-  @extend .subHeader
+  @extend .subHeader;
   font-weight: 600;
 }

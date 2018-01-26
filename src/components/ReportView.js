@@ -153,29 +153,31 @@ class ReportView extends Component {
     return (
       <div id="reportView" className="subPage">
         { this.state.pageStatus === 0 &&
-          <div>
+          <div className="container">
             <div className="welcomeContainer flex" style={bgStyle}>
-              <span class="flex">
+              <span className="flex">
                 <img src={owl} alt="owl"/>
                 <h1 className="header">Hi There!</h1>
               </span>
               <p className="subHeader">Help your neighborhood to grow by just several clicks!</p>
             </div>
-            <div class="actionContainer">
+            <div className="actionContainer">
               <FloatingActionButton onClick={this.handleAddNew} className='addBtn'>
                 <ContentAdd />
               </FloatingActionButton>
               <FloatingActionButton className='orderBtn'>
-                <i class="material-icons">track_changes</i>
+                <i className="material-icons">track_changes</i>
               </FloatingActionButton>
-              <div className="subHeader2">
-                {this.featuresCount} NEARYBY COMMENTS
+              <div className="flex">
+                <div className="subHeader2">
+                  {this.featuresCount} NEARYBY COMMENTS
+                </div>
+                <span className="mapBtn" onClick={this.goToMap}> Map View</span>
               </div>
-              <span className="mapBtn" onClick={this.goToMap}> Map View</span>
 
             </div>
 
-            <div>
+            <div className="commentList">
               {listItems}
             </div>
           </div>
