@@ -49,6 +49,18 @@ html,body, #root{
       font-size: 15px!important;
     }
   }
+  .flex{
+    flex-direction: row;
+    .contentLeft{
+
+    }
+    .contentRight{
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
 }
 
 .flex{

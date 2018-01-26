@@ -41,9 +41,10 @@ class CommentCardView extends Component {
     return (
       <Card className="commentCard">
         <CardText>
+          <div className="flex">
             <div className="contentLeft">
               <span className="category">{this.props.data.Category}</span>
-              <span className="content">'"'+{this.props.data.Content}+'"'</span>
+              <span className="content">{this.props.data.Content}</span>
               <div className="flex">
                 <span className="time">
                   <TimeAgo>{this.props.data.Time}</TimeAgo>
@@ -54,6 +55,7 @@ class CommentCardView extends Component {
             <div className="contentRight">
               <img src={this.props.data.Image} />
             </div>
+          </div>
         </CardText>
         { this.props.isActionDisplayed &&
           <CardActions className="cardActions">
