@@ -21,16 +21,15 @@ class App extends Component {
       },
       featuresAround: null,
       currentSelection: null,
-      pageStatus: 0,
-      commentLiked: {
-        id: null,
-        isLike: null,
-      }
+      pageStatus: 0
+    }
+    this.fakeCurrentLocation = {
+      x: -122.413,
+      y: 37.767
     }
   }
 
   handleMapClicked = (evt) => {
-    console.log(evt);
     this.setState({
       currentSelection : evt
     })
@@ -50,8 +49,8 @@ class App extends Component {
     // Fake Location Info
     this.setState({
       queryPoint:{
-        x: -122.413,
-        y: 37.767
+        x: this.fakeCurrentLocation.x,
+        y: this.fakeCurrentLocation.y
       }
     })
   }
@@ -68,19 +67,14 @@ class App extends Component {
     // Fake Location Info
     this.setState({
       queryPoint:{
-        x: -122.413,
-        y: 37.767
+        x: this.fakeCurrentLocation.x,
+        y: this.fakeCurrentLocation.y
       }
     })
   }
 
   handleCommentLike(id, isLike) {
-    // this.setState({
-    //   commentLiked: {
-    //     id: id,
-    //     isLike: isLike
-    //   }
-    // })
+
   }
 
   render() {
@@ -95,6 +89,7 @@ class App extends Component {
               featuresAround = {this.state.featuresAround}
               onToggleToMapView = {this.handleToggleToMapView}
               onCommentLike = {this.handleCommentLike}
+              queryPoint = {this.state.queryPoint}
             />
           }
           { this.state.pageStatus === 2 &&
@@ -105,9 +100,7 @@ class App extends Component {
           }
           <MapView
             isDisplayed={(this.state.pageStatus === 2? true : false)}
-            currentLocation={this.state.currentLocation}
             queryPoint={this.state.queryPoint}
-            commentLiked={this.state.commentLiked}
             onQueryResultsReturned={this.handleQueryResultsReturned}
             onMapClicked={this.handleMapClicked}
           />

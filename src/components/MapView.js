@@ -18,8 +18,7 @@ class MapView extends Component {
         log: this.props.queryPoint.y
       },
       queryPoint: this.props.queryPoint,
-      isDisplayed: this.props.isDisplayed,
-      commentLiked: this.props.commentLiked
+      isDisplayed: this.props.isDisplayed
     };
     this.mapObjects = {
       view: null,
@@ -373,7 +372,6 @@ class MapView extends Component {
          // Bind view events
          view.when(function(){
            // Export map objects
-
 
            view.on("click", function(event){
              const screenPoint = {

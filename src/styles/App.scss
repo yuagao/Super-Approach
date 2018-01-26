@@ -61,3 +61,11 @@ html,body, #root{
 
   }
 }
+
+.thumbNailMap{
+  height: 100%;
+  .show{
+    height: calc(100% - 400px)!important;
+    width: 100%;
+  }
+}

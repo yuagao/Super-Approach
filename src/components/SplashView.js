@@ -7,9 +7,10 @@ class SplashView extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      uploadImageUrl: null
-    }
+  }
+
+  componentDidMount() {
+    this.getlocation();
   }
 
   getlocation = () => {
@@ -25,28 +26,10 @@ class SplashView extends React.Component {
     });
   }
 
-  hanldeImageUpload = (e) => {
-    const file = e.target.files[0]
-    const reader = new FileReader();
-    if (file){
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        console.log(e)
-        this.setState({
-          uploadImageUrl: e.target.result
-        })
-      }
-
-    }
-  }
-
   render() {
     return (
       <div id="splashView" className="subPage">
         <img src={logo} alt="logo"/>
-        <img src={this.state.uploadImageUrl} />
-        <input type="file" accept="image/*" onChange={this.hanldeImageUpload}/>
-        <RaisedButton label="get current location" onClick={this.getlocation}/>
       </div>
     );
   }
