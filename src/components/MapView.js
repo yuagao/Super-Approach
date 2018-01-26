@@ -3,6 +3,10 @@ import EsriLoaderReact from 'esri-loader-react';
 import logo from '../images/logo.svg';
 import traffic from '../images/traffic.png';
 import dump from '../images/dump.png';
+import snow from '../images/snow.png';
+import car from '../images/car.png';
+import tree from '../images/tree.png';
+import life from '../images/life.png';
 
 class MapView extends Component {
 
@@ -136,7 +140,7 @@ class MapView extends Component {
 
            var scene = new WebScene({
              portalItem: {
-               id: "f076224843674290a706e7f1d05f32d5"
+               id: "2a47b1b6e8794464a442766939a134eb"
              }
            });
 
@@ -148,7 +152,7 @@ class MapView extends Component {
              container: containerNode,
              map: scene,
              camera: {
-               position: [-122.402, 37.787, 439.35],
+               position: [-122.413, 37.767, 439.35],
                tilt: 0,
                heading: 0
              }
@@ -160,18 +164,149 @@ class MapView extends Component {
            const gLayer = new GraphicsLayer();
            scene.add(gLayer);
 
-           const defaultSymbol = new PictureMarkerSymbol({
-                url:{dump}.dump,
-                width: '103px',
-                height: '92px'
-            });
+          var dumpSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {dump}.dump
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#c75448"),
+              border: {
+                color: new Color("#c75448")
+              }
+            }
+          });
 
-            const trafficSymbol = new PictureMarkerSymbol({
-                 url:{traffic}.traffic,
-                 width: '103px',
-                 height: '92px'
-             });
+          var trafficSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {traffic}.traffic
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#f89f1b"),
+              border: {
+                color: new Color("#f89f1b")
+              }
+            }
+          });
 
+          var snowSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {snow}.snow
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#4c6c4c"),
+              border: {
+                color: new Color("#4c6c4c")
+              }
+            }
+          });
+
+          var treeSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {tree}.tree
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#123f39"),
+              border: {
+                color: new Color("#123f39")
+              }
+            }
+          });
+
+          var lifeSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {life}.life
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#f16722"),
+              border: {
+                color: new Color("#f16722")
+              }
+            }
+          });
+
+          var carSymbol = ({
+            type: "point-3d",  // autocasts as new PointSymbol3D()
+            symbolLayers: [{
+              type: "icon",  // autocasts as new IconSymbol3DLayer()
+              resource: {
+                href: {car}.car
+              },
+              size: 20
+            }],
+            verticalOffset: {
+              screenLength: 40,
+              maxWorldLength: 100,
+              minWorldLength: 20
+            },
+            callout: {
+              type: "line", // autocasts as new LineCallout3D()
+              size: 1.5,
+              color: new Color("#32717f"),
+              border: {
+                color: new Color("#32717f")
+              }
+            }
+          });
 
            const red = new Color('red')
 
@@ -181,24 +316,43 @@ class MapView extends Component {
 
            let renderer = new UniqueValueRenderer({
                field: "Category",
-               defaultSymbol: defaultSymbol,
+               defaultSymbol: dumpSymbol,
                uniqueValueInfos: [{
-               value: "Transportation",
+               value: "Parking & Vehicles",
                symbol: trafficSymbol
              },
              {
-                value: "Facility",
-                symbol: defaultSymbol
+                value: "Winter Conditions",
+                symbol: snowSymbol
+             },
+             {
+                value: "Streets & Sidewalks",
+                symbol: carSymbol
+             },
+             {
+                value: "Trees & Parks",
+                symbol: treeSymbol
+             },
+             {
+                value: "Quality of Life",
+                symbol: lifeSymbol
              }]
            });
 
 
           // Add Layers
           const featureLayer = new FeatureLayer({
-            url: "https://services.arcgis.com/rqiKEkqyZ6RGCUcD/ArcGIS/rest/services/ReportedIssues/FeatureServer/0",
+            url: "https://services.arcgis.com/yLA6mQfrA0yQr00r/ArcGIS/rest/services/NewComments_CopyFeatures/FeatureServer/0",
             outFields: ["*"],
             renderer: renderer,
-            popupEnabled: true
+            popupEnabled: true,
+            elevationInfo: {
+              mode: "relative-to-ground",
+              featureExpressionInfo: {
+                expression: "5"
+              },
+              unit: "meters"
+            }
           });
           scene.add(featureLayer);
 
