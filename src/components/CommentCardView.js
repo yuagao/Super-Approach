@@ -50,9 +50,16 @@ class CommentCardView extends Component {
               <span className="category">{this.props.data.Category}</span>
               <span className="content">{this.props.data.Content}</span>
               <div className="flex">
-                <span className="time">
-                  <TimeAgo>{this.props.data.Time}</TimeAgo>
-                </span>
+                { this.props.cardMode === 0 &&
+                  <span className="time">
+                    <TimeAgo>{this.props.data.Time}</TimeAgo>
+                  </span>
+                }
+                { this.props.cardMode === 1 &&
+                  <span className="time">
+                    <TimeAgo>{this.props.data.Time}</TimeAgo>
+                  </span>
+                }
                 <span className="status">{this.props.data.Status}</span>
               </div>
             </div>

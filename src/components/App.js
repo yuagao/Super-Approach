@@ -25,7 +25,7 @@ class App extends Component {
     }
     this.fakeCurrentLocation = {
       x: -122.413,
-      y: 37.767
+      y: 37.766
     }
   }
 
@@ -54,7 +54,7 @@ class App extends Component {
           y: this.fakeCurrentLocation.y
         }
       })
-    },700);
+    },2000);
 
   }
 

@@ -169,6 +169,23 @@ html,body, #root{
   }
   .newCommentPage{
     padding-top: 50px;
+    &.thumbNailPage{
+      padding-top: 0px;
+      .bottomBar{
+        padding: 0px;
+        bottom: 5px;
+        button {
+          width: 300px!important;
+        }
+      }
+    }
+    .thumbNailMap{
+      height: 100%;
+      .show{
+        height: calc(100% - 170px)!important;
+        width: 100%;
+      }
+    }
     .header{
       text-align: center;
       width: 80%;
@@ -180,6 +197,27 @@ html,body, #root{
       height: 360px;
       display: block;
       margin: 0 auto;
+    }
+    .bottomBar{
+      position: absolute;
+      height: 35px;
+      padding: 0px 20px;
+      width: calc(100% - 40px);
+      bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .textFieldContainer{
+      width: 80%;
+      margin: 0 auto;
+      >div{
+        width: 100%;
+      }
+    }
+    .uploadImageBtn {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
     }
   }
   .categoryList{
@@ -199,11 +237,40 @@ html,body, #root{
         height: 92px;
       }
       span{
-        @extend .body1
+        @extend .body1;
+        font-size: 16px;
       }
     }
   }
+
 }
+
+.thankPage{
+  .thankContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 220px;
+    margin-top: 50px;
+    .owl{
+      width:80px;
+    }
+  }
+  .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    margin-top: 50px;
+
+    button{
+      width: 200px!important;
+    }
+  }
+}
+
 
 
 
@@ -223,13 +290,7 @@ html,body, #root{
   }
 }
 
-.thumbNailMap{
-  height: 100%;
-  .show{
-    height: calc(100% - 400px)!important;
-    width: 100%;
-  }
-}
+
 
 
 // Text style
