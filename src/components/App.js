@@ -25,7 +25,7 @@ class App extends Component {
     }
     this.fakeCurrentLocation = {
       x: -122.413,
-      y: 37.767
+      y: 37.766
     }
   }
 

@@ -172,9 +172,10 @@ class MapView extends Component {
              container: containerNode,
              map: scene,
              camera: {
-               position: [-122.413, 37.767, 439.35],
-               tilt: 0,
-               heading: 0
+               position: [-122.413, 37.765, 122.344],
+               tilt: -40.701,
+               heading: 180,
+               fov: 90
              }
            });
 
