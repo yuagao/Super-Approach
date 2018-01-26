@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TimeAgo from 'react-time-ago';
+import 'react-time-ago/Tooltip.css'
 
 class CommentCardView extends Component {
 
@@ -17,6 +19,8 @@ class CommentCardView extends Component {
         <span>Dislike: {this.props.data.DislikeIt}</span>
         <br/>
         <span>Status: {this.props.data.Status}</span>
+        <br/>
+        <span>Time: <TimeAgo>{this.props.data.Time}</TimeAgo></span>
       </div>
     );
   }

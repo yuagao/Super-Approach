@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../styles/App.css';
 import SplashView from './SplashView';
@@ -11,6 +13,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    TimeAgo.locale(en);
     this.state = {
       queryPoint: {
         x: null,
