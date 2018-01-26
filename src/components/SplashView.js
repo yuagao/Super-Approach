@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
+import splash from '../images/splash.gif';
+import background from '../images/bg.png';
 
 
 class SplashView extends Component {
@@ -25,10 +26,16 @@ class SplashView extends Component {
     });
   }
 
+
+
   render() {
+    const bgStyle = {
+      backgroundImage:"url(" + background + ")",
+    };
     return (
-      <div id="splashView" className="subPage">
-        <img src={logo} alt="logo"/>
+      <div id="splashView" className="subPage" style={bgStyle}>
+        <img src={splash} height="140" width="140" alt="splash"/>
+        <span className="subHeader"> Getting your current location... </span>
       </div>
     );
   }

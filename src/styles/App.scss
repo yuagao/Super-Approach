@@ -18,6 +18,7 @@ html,body, #root{
   display: flex;
   height: 100%;
   flex-direction: column;
+  background: #f8f8f8;
 }
 
 .subPage{
@@ -25,9 +26,9 @@ html,body, #root{
   width: 100%;
 }
 
-#splashView{
-  display: flex;
-  flex-direction: column;
+.container{
+  height: 100%;
+  width: 100%;
 }
 
 .show{
@@ -39,7 +40,14 @@ html,body, #root{
 }
 
 .commentCard {
+  margin-bottom: 15px;
+  .owl{
+    position: absolute;
+    top: -23px;
+    left: 16px;
+  }
   .cardActions{
+    border-top: 1px solid rgba(0,0,0,.08);
     button{
       width: 50%;
       margin: 0px!important;
@@ -48,7 +56,157 @@ html,body, #root{
       font-size: 15px!important;
     }
   }
+  .flex{
+    flex-direction: row;
+    justify-content: space-between;
+    .contentLeft{
+      display: flex;
+      flex-direction: column;
+      padding-right: 20px;
+      justify-content: space-between;
+      .category{
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 5px;
+      }
+      .content{
+        @extend .body1;
+        margin-bottom: 5px;
+      }
+      .time{
+        @extend .caption;
+      }
+      .status{
+        @extend .caption;
+      }
+    }
+    .contentRight{
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
 }
+
+.flex{
+  display: flex;
+}
+
+
+#splashView{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: 100%;
+  img {
+    margin-bottom: 30px;
+  }
+}
+
+#reportView {
+  .welcomeContainer{
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    .flex{
+      flex-direction: row;
+      align-items: flex-end;
+      img{
+        width: 35px;
+        margin-right: 10px;
+      }
+    }
+    .subHeader{
+      width: 250px;
+      text-align: center;
+      margin-top: 15px;
+    }
+    flex-direction: column;
+  }
+  .actionContainer{
+    height: 85px;
+    background: #f8f8f8;
+    position: relative;
+    .addBtn{
+      position: absolute;
+      right: 10px;
+      top: -25px;
+    }
+    .orderBtn{
+      position: absolute;
+      right: 80px;
+      top: -25px;
+      button{
+        background-color: white!important;
+        .material-icons{
+          fill: #26675B!important;
+          color: #26675B!important;
+        }
+      }
+    }
+    .flex{
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0px 10px;
+      position: absolute;
+      width: calc(100% - 20px);
+      bottom: 10px;
+    }
+    .mapBtn{
+      font-weight: 600;
+      font-size: 14px;
+      color: #26675B;
+      letter-spacing: 0;
+    }
+  }
+  .commentList {
+    height: calc(100% - 255px);
+    overflow-y: auto;
+  }
+  .newCommentPage{
+    padding-top: 50px;
+    .header{
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    .previewImage{
+      width: 360px;
+      height: 360px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .categoryList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .category{
+      width: 150px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 92px;
+        height: 92px;
+      }
+      span{
+        @extend .body1
+      }
+    }
+  }
+}
+
+
+
 
 #mapUIView{
   .mapToggle{
@@ -61,7 +219,7 @@ html,body, #root{
     z-index: 10;
     bottom: 0px;
     width: 100%;
-
+    margin: 0px;
   }
 }
 
@@ -74,21 +232,41 @@ html,body, #root{
 }
 
 
+// Text style
 
 
-/*---------claudia--begin----------*/
-
-#reportView h1{
-font-family: 'Source Sans Pro';
-font-size:24px;
+.header{
+  font-weight: 600;
+  font-size: 24px;
+  color: rgba(0,0,0,0.87);
+  line-height: 31px;
+  margin: 0px;
 }
 
 
+.subHeader{
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0,0,0,0.54);
+  line-height: 24px;
+  margin: 0px;
+}
 
+.subHeader2{
+  @extend .subHeader;
+  font-weight: 600;
+}
 
+.body1{
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0,0,0,0.87);
+  line-height: 20px;
+}
 
-
-
-/*---------claudia--end----------*/
-
-
+.caption{
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(0,0,0,0.54);
+  line-height: 16px;
+}

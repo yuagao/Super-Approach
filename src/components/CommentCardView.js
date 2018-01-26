@@ -3,6 +3,7 @@ import {Card, CardActions, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import TimeAgo from 'react-time-ago';
+import halfOwl from '../images/half-owl.png';
 import 'react-time-ago/Tooltip.css'
 
 
@@ -40,14 +41,30 @@ class CommentCardView extends Component {
     }
     return (
       <Card className="commentCard">
+        { this.props.cardMode === 1 &&
+          <img className="owl" src={halfOwl} alt="owl"/>
+        }
         <CardText>
-          <span>Category: {this.props.data.Category}</span>
-          <br/>
-          <span>Content: {this.props.data.Content}</span>
-          <br/>
-          <span>Time: <TimeAgo>{this.props.data.Time}</TimeAgo></span>
-          <br/>
-          <span>Status: {this.props.data.Status}</span>
+          <div className="flex">
+            <div className="contentLeft">
+              <span className="category">{this.props.data.Category}</span>
+              <span className="content">{this.props.data.Content}</span>
+              <div className="flex">
+                <span className="time">
+                  <TimeAgo>{this.props.data.Time}</TimeAgo>
+                </span>
+                <span className="status">{this.props.data.Status}</span>
+              </div>
+            </div>
+            <div className="contentRight">
+              { this.props.data.Image &&
+                <img src={this.props.data.Image} alt="image"/>
+              }
+              { this.props.data.Image === '_' &&
+                <img src="https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" />
+              }
+            </div>
+          </div>
         </CardText>
         { this.props.isActionDisplayed &&
           <CardActions className="cardActions">

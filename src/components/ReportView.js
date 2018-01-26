@@ -11,6 +11,9 @@ import life from '../images/life_button.svg';
 import snow from '../images/snow_button.svg';
 import traffic from '../images/traffic_button.svg';
 import tree from '../images/tree_button.svg';
+import owl from '../images/owl.svg';
+import background from '../images/bg.png';
+import camera from '../images/camera.png';
 
 class ReportView extends Component {
 
@@ -32,6 +35,7 @@ class ReportView extends Component {
       Flag: 0
     };
     this.featuresCount = 0;
+    this.showPreviewImage = false;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -138,6 +142,7 @@ class ReportView extends Component {
           data={feature.attributes}
           isActionDisplayed = {true}
           onCommentLike={this.handleCommentLike}
+          cardMode={0}
         />
       );
     }
@@ -145,22 +150,37 @@ class ReportView extends Component {
     const styleHeight = {
       height: '100%'
     };
+    const bgStyle = {
+      backgroundImage:"url(" + background + ")",
+    };
     return (
-      <div id="reportView" className="subPage">
+      <div id="reportView" className="subPage" style={bgStyle}>
         { this.state.pageStatus === 0 &&
-          <div>
-            <div>
-              <h1>Hi There!</h1>
-              <h2>Help your neighborhood to grow by providing your feedback or helping evaluting the existing feedback</h2>
+          <div className="container">
+            <div className="welcomeContainer flex" style={bgStyle}>
+              <span className="flex">
+                <img src={owl} alt="owl"/>
+                <h1 className="header">Hi There!</h1>
+              </span>
+              <p className="subHeader">Help your neighborhood to grow by just several clicks!</p>
             </div>
-            <div>
-              {this.featuresCount} Nearby Comments
+            <div className="actionContainer">
+              <FloatingActionButton onClick={this.handleAddNew} className='addBtn'>
+                <ContentAdd />
+              </FloatingActionButton>
+              <FloatingActionButton className='orderBtn'>
+                <i className="material-icons">track_changes</i>
+              </FloatingActionButton>
+              <div className="flex">
+                <div className="subHeader2">
+                  {this.featuresCount} NEARYBY COMMENTS
+                </div>
+                <span className="mapBtn" onClick={this.goToMap}> Map View</span>
+              </div>
+
             </div>
-            <RaisedButton label="go to map" onClick={this.goToMap}/>
-            <FloatingActionButton onClick={this.handleAddNew}>
-              <ContentAdd />
-            </FloatingActionButton>
-            <div>
+
+            <div className="commentList">
               {listItems}
             </div>
           </div>
@@ -168,41 +188,41 @@ class ReportView extends Component {
         }
 
         { this.state.pageStatus === 1 &&
-          <div>
-            <h3>Category</h3>
-            <div>
-              <span onClick={() => {
+          <div className="newCommentPage">
+            <h1 className="header">Which category would you like to report?</h1>
+            <div className="categoryList">
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Quality of Life')
                 }}>
                 <img src={life} alt=""/>
                 <span>Quality of Life</span>
               </span>
-              <span onClick={() => {
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Parking & Vehicles')
                 }}>
                 <img src={traffic} alt=""/>
                 <span>Parking & Vehicles</span>
               </span>
-              <span onClick={() => {
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Streets & Sidewalks')
                 }}>
                 <img src={car} alt=""/>
 
                 <span>Streets & Sidewalks</span>
               </span>
-              <span onClick={() => {
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Sanitation')
                 }}>
               <img src={dump} alt=""/>
                 <span>Sanitation</span>
               </span>
-              <span onClick={() => {
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Winter Conditions')
                 }}>
               <img src={snow} alt=""/>
                 <span>Winter Conditions</span>
               </span>
-              <span onClick={() => {
+              <span className="category" onClick={() => {
                   this.handleCategorySelected('Trees & Parks')
                 }}>
                 <img src={tree} alt=""/>
@@ -213,8 +233,8 @@ class ReportView extends Component {
         }
 
         { this.state.pageStatus === 2 &&
-          <div>
-            <h3>Please describe your issue</h3>
+          <div className="newCommentPage">
+            <h1 className="header">Please describe your issue.</h1>
             <div>
               <TextField
                 id = "descriptionInput"
@@ -229,11 +249,13 @@ class ReportView extends Component {
         }
 
         { this.state.pageStatus === 3 &&
-          <div>
-            <h3>Take Photo</h3>
+          <div className="newCommentPage">
+            <h1 className="header">A picture is worth a thousand words.</h1>
             <div>
-              <img src={this.state.uploadImageUrl} alt="Uploaded"/>
-              <div onClick={this.handleUploadImageBtnClicked}> Upload Image</div>
+              { this.showPreviewImage &&
+                <img className="previewImage" src={this.state.uploadImageUrl} />
+              }
+              <div id="uploadImageBtn" onClick={this.handleUploadImageBtnClicked}> <img src={camera} alt="upload image"/></div>
               <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
             </div>
             <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
@@ -255,6 +277,7 @@ class ReportView extends Component {
                 data={this.currentSelection}
                 onCommentLike={()=>{}}
                 isActionDisplayed = {false}
+                cardMode={2}
               />
               <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
             </div>
@@ -264,9 +287,9 @@ class ReportView extends Component {
         }
 
         { this.state.pageStatus === 5 &&
-          <div>
+          <div className="newCommentPage">
             <div>
-              <h3>Thank you</h3>
+              <h1 className="header">Thank you for your contribution! </h1>
             </div>
             <RaisedButton label="next" onClick={this.handleBackToList}/>
           </div>
