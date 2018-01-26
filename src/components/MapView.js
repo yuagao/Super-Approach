@@ -160,7 +160,7 @@ class MapView extends Component {
 
            var scene = new WebScene({
              portalItem: {
-               id: "2a47b1b6e8794464a442766939a134eb"
+               id: "19cff58e1c024d0ea467d644d40bd825"
              }
            });
 
