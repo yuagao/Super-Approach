@@ -270,3 +270,75 @@ html,body, #root{
   color: rgba(0,0,0,0.54);
   line-height: 16px;
 }
+
+
+/*----claudia---*/
+/*----mapview---*/
+
+#mapUIView .mapToggle{
+
+  margin-top: 16px;
+  margin-right: 16px;
+  opacity: 0.7;
+
+}
+
+.mapToggle span{
+  color:rgba(38,103,91,1) !important;
+}
+
+/*----mapview--end-*/
+
+/*----commetCard---*/
+
+.commentCard:nth-of-type(1) .flex .contentLeft .category{
+
+color:#c75448;
+
+}
+
+.commentCard:nth-of-type(2) .flex .contentLeft .category{
+
+color:#4c6c4c;
+
+}
+.commentCard:nth-of-type(3) .flex .contentLeft .category{
+
+color:#32717f;
+
+}
+.commentCard:nth-of-type(4) .flex .contentLeft .category{
+
+color:#f89f1b;
+
+}
+.commentCard:nth-of-type(5) .flex .contentLeft .category{
+
+color:#123f39;
+
+}
+.commentCard:nth-of-type(6) .flex .contentLeft .category{
+
+color:#f89f1b;
+
+}
+.commentCard:nth-of-type(7) .flex .contentLeft .category{
+
+color:#f16722;
+
+}
+.commentCard:nth-of-type(8) .flex .contentLeft .category{
+
+color:#c75448;
+
+}
+.commentCard:nth-of-type(9) .flex .contentLeft .category{
+
+color:#f16722;
+
+}
+
+/*----commetCard--end---*/
+
+
+/*----claudia--end---*/
