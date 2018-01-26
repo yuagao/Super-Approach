@@ -85,6 +85,8 @@ class ReportView extends Component {
   handleUploadImageBtnClicked = () => {
     const input = document.getElementById('imageInput');
     input.click();
+    this.showPreviewImage = true;
+    this.forceUpdate();
   }
 
 
@@ -114,7 +116,17 @@ class ReportView extends Component {
   handleConfirmClicked = () => {
     this.setState({
       pageStatus: 5
-    })
+    });
+    this.currentSelection = {
+      Category: null,
+      Image: null,
+      Time: null,
+      Content: null,
+      LikeIt: 0,
+      DislikeIt: 0,
+      Status: 'New',
+      Flag: 0
+    };
   }
 
   handleBackToList= () => {
@@ -235,7 +247,7 @@ class ReportView extends Component {
         { this.state.pageStatus === 2 &&
           <div className="newCommentPage">
             <h1 className="header">Please describe your issue.</h1>
-            <div>
+            <div className="textFieldContainer">
               <TextField
                 id = "descriptionInput"
                 hintText="Description"
@@ -243,7 +255,9 @@ class ReportView extends Component {
                 rows={1}
               />
             </div>
-            <RaisedButton label="next" onClick={this.handleProceedToCamera}/>
+            <div className="bottomBar">
+              <RaisedButton label="next" onClick={this.handleProceedToCamera}/>
+            </div>
 
           </div>
         }
@@ -255,16 +269,18 @@ class ReportView extends Component {
               { this.showPreviewImage &&
                 <img className="previewImage" src={this.state.uploadImageUrl} />
               }
-              <div id="uploadImageBtn" onClick={this.handleUploadImageBtnClicked}> <img src={camera} alt="upload image"/></div>
+              <div id="uploadImageBtn" className="uploadImageBtn" onClick={this.handleUploadImageBtnClicked}> <img src={camera} alt="upload image"/></div>
               <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
             </div>
-            <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
+            <div className="bottomBar">
+              <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
+            </div>
 
           </div>
         }
 
         { this.state.pageStatus === 4 &&
-          <div style={styleHeight}>
+          <div style={styleHeight} className="newCommentPage thumbNailPage">
             <div className="thumbNailMap">
               <MapView
                 isDisplayed = {true}
@@ -279,7 +295,9 @@ class ReportView extends Component {
                 isActionDisplayed = {false}
                 cardMode={2}
               />
-              <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
+              <div className="bottomBar">
+                <RaisedButton label="confirm" primary={true} onClick={this.handleConfirmClicked}/>
+              </div>
             </div>
 
 
@@ -289,6 +307,7 @@ class ReportView extends Component {
         { this.state.pageStatus === 5 &&
           <div className="newCommentPage">
             <div>
+              <img className = "Owl" src={owl} />
               <h1 className="header">Thank you for your contribution! </h1>
             </div>
             <RaisedButton label="next" onClick={this.handleBackToList}/>

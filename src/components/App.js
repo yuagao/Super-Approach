@@ -54,7 +54,7 @@ class App extends Component {
           y: this.fakeCurrentLocation.y
         }
       })
-    },700);
+    },1000);
 
   }
 
