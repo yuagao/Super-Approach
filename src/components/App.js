@@ -70,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div>
+        <div className="page">
           { this.state.pageStatus === 0 &&
             <SplashView onGetCurrentLocation={this.handleGetCurrentLocation}/>
           }
@@ -78,6 +78,7 @@ class App extends Component {
             <ReportView
               featuresAround = {this.state.featuresAround}
               onToggleToMapView = {this.handleToggleToMapView}
+              onCommentLike = {this.handleCommentLike}
             />
           }
           { this.state.pageStatus === 2 &&
@@ -93,7 +94,6 @@ class App extends Component {
             onQueryResultsReturned={this.handleQueryResultsReturned}
             onMapClicked={this.handleMapClicked}
           />
-
       </div>
      </MuiThemeProvider>
     );

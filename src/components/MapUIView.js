@@ -26,11 +26,11 @@ class MapUIView extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div id="mapUIView">
+        <div className="mapToggle">
           <RaisedButton label="go to Report" onClick={this.goToReport}/>
         </div>
-        <div>
+        <div className="commentCard">
           { this.state.currentSelection &&
             <CommentCardView data={this.state.currentSelection} />
           }

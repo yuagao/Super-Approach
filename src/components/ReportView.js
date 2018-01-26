@@ -32,6 +32,10 @@ class ReportView extends React.Component {
 
   }
 
+  handleCommentLike = (id, isLike) => {
+    this.props.onCommentLike(id, isLike);
+  }
+
   render() {
 
     const features = this.state.featuresAround;
@@ -39,13 +43,16 @@ class ReportView extends React.Component {
     if (features) {
       listItems = features.map((feature) =>
         <CommentCardView key={feature.attributes.OBJECTID.toString()}
-                  data={feature.attributes} />
+                  data={feature.attributes}
+                  onCommentLike={this.handleCommentDislike}
+        />
       );
     }
     return (
       <div>
         <div>
-          Hi There!
+          <h1>Hi There!</h1>
+          <h2>Help your neighborhood to grow by providing your feedback or helping evaluting the existing feedback</h2>
         </div>
         <div>
           {this.featuresCount} Nearby Comments
