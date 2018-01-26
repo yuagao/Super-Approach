@@ -329,7 +329,7 @@ class MapView extends Component {
             }
           });
 
-           const red = new Color('red')
+           const red = new Color('#F9A01B');
 
            const myLocationSymbol = new SimpleMarkerSymbol({
              color: red
