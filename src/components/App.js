@@ -7,7 +7,6 @@ import SplashView from './SplashView';
 import MapView from './MapView';
 import MapUIView from './MapUIView';
 import ReportView from './ReportView';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class App extends Component {
 

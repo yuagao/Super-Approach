@@ -25,7 +25,7 @@ class MapUIView extends Component {
   }
 
   handleCommentLike = () => {
-    
+
   }
 
   render() {
@@ -39,6 +39,7 @@ class MapUIView extends Component {
             <CommentCardView
               data={this.state.currentSelection}
               onCommentLike={this.handleCommentLike}
+              isActionDisplayed={true}
             />
           }
         </div>

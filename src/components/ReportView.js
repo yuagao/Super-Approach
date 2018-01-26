@@ -8,7 +8,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import logo from '../images/logo.svg';
 
 
-class ReportView extends React.Component {
+class ReportView extends Component {
 z
   constructor(props) {
     super(props);
@@ -141,6 +141,7 @@ z
         <CommentCardView
           key={feature.attributes.OBJECTID.toString()}
           data={feature.attributes}
+          isActionDisplayed = {true}
           onCommentLike={this.handleCommentLike}
         />
       );
@@ -178,37 +179,37 @@ z
               <span onClick={() => {
                   this.handleCategorySelected('Quality of Life')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Quality of Life</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Parking & Vehicles')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Parking & Vehicles</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Streets & Sidewalks')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Streets & Sidewalks</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Sanitation')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Sanitation</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Winter Conditions')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Winter Conditions</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Trees & Parks')
                 }}>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span>Trees & Parks</span>
               </span>
             </div>
@@ -235,7 +236,7 @@ z
           <div>
             <h3>Take Photo</h3>
             <div>
-              <img src={this.state.uploadImageUrl} />
+              <img src={this.state.uploadImageUrl} alt="Uploaded"/>
               <div onClick={this.handleUploadImageBtnClicked}> Upload Image</div>
               <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
             </div>
@@ -252,14 +253,17 @@ z
                 queryPoint={this.props.queryPoint}
                 onQueryResultsReturned={()=>{}}
                 onMapClicked={()=>{}}
+                hideFeatures={true}
               />
               <CommentCardView
                 data={this.currentSelection}
                 onCommentLike={()=>{}}
+                isActionDisplayed = {false}
               />
+              <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
             </div>
 
-            <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
+
           </div>
         }
 
