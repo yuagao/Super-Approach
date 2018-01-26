@@ -43,8 +43,8 @@ class App extends Component {
     // Fake Location Info
     this.setState({
       queryPoint:{
-        x: -122.402,
-        y: 37.787
+        x: -122.413,
+        y: 37.767
       }
     })
   }
@@ -61,8 +61,8 @@ class App extends Component {
     // Fake Location Info
     this.setState({
       queryPoint:{
-        x: -122.402,
-        y: 37.787
+        x: -122.413,
+        y: 37.767
       }
     })
   }
