@@ -5,7 +5,12 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import TextField from 'material-ui/TextField';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import logo from '../images/logo.svg';
-
+import car from '../images/car_button.svg';
+import dump from '../images/dump_button.svg';
+import life from '../images/life_button.svg';
+import snow from '../images/snow_button.svg';
+import traffic from '../images/traffic_button.svg';
+import tree from '../images/tree_button.svg';
 
 class ReportView extends React.Component {
 
@@ -96,37 +101,37 @@ class ReportView extends React.Component {
               <span onClick={() => {
                   this.handleCategorySelected('Quality of Life')
                 }}>
-                <img src={logo} />
+                <img src={life} />
                 <span>Quality of Life</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Parking & Vehicles')
                 }}>
-                <img src={logo} />
+                <img src={traffic} />
                 <span>Parking & Vehicles</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Streets & Sidewalks')
                 }}>
-                <img src={logo} />
+                <img src={car} />
                 <span>Streets & Sidewalks</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Sanitation')
                 }}>
-                <img src={logo} />
+                <img src={dump} />
                 <span>Sanitation</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Winter Conditions')
                 }}>
-                <img src={logo} />
+                <img src={snow} />
                 <span>Winter Conditions</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Trees & Parks')
                 }}>
-                <img src={logo} />
+                <img src={tree} />
                 <span>Trees & Parks</span>
               </span>
             </div>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import EsriLoaderReact from 'esri-loader-react';
 import logo from '../images/logo.svg';
-import traffic from '../images/traffic.png';
-import dump from '../images/dump.png';
-import snow from '../images/snow.png';
-import car from '../images/car.png';
-import tree from '../images/tree.png';
-import life from '../images/life.png';
+import traffic from '../images/traffic_icon.svg';
+import dump from '../images/dump_icon.svg';
+import snow from '../images/snow_icon.svg';
+import car from '../images/car_icon.svg';
+import tree from '../images/tree_icon.svg';
+import life from '../images/life_icon.svg';
 
 class MapView extends Component {
 
@@ -183,7 +183,7 @@ class MapView extends Component {
               resource: {
                 href: {dump}.dump
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -207,7 +207,7 @@ class MapView extends Component {
               resource: {
                 href: {traffic}.traffic
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -231,7 +231,7 @@ class MapView extends Component {
               resource: {
                 href: {snow}.snow
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -255,7 +255,7 @@ class MapView extends Component {
               resource: {
                 href: {tree}.tree
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -279,7 +279,7 @@ class MapView extends Component {
               resource: {
                 href: {life}.life
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -303,7 +303,7 @@ class MapView extends Component {
               resource: {
                 href: {car}.car
               },
-              size: 20
+              size: 40
             }],
             verticalOffset: {
               screenLength: 40,
@@ -357,14 +357,7 @@ class MapView extends Component {
             url: "https://services.arcgis.com/yLA6mQfrA0yQr00r/ArcGIS/rest/services/NewComments_CopyFeatures/FeatureServer/0",
             outFields: ["*"],
             renderer: renderer,
-            popupEnabled: true,
-            elevationInfo: {
-              mode: "relative-to-ground",
-              featureExpressionInfo: {
-                expression: "5"
-              },
-              unit: "meters"
-            }
+            popupEnabled: true
           });
           scene.add(featureLayer);
 
