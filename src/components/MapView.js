@@ -122,6 +122,22 @@ class MapView extends Component {
     this.props.onMapClicked(response.results[0].graphic.attributes)
   }
 
+   selectFeature(objectId, featureLayer, sceneView, snowSymbol) {
+    // symbol for the selected feature on the view
+    var selectionSymbol = snowSymbol;
+    const query = this.mapObjects.featureLayer.createQuery();
+    query.where = featureLayer.attributes.OBJECTID.toString() + " = " + objectId;
+
+    this.mapObjects.featureLayer.queryFeatures(query).then(function(results) {
+      if (results.features.length > 0) {
+        var editFeature = results.features[0];
+        console.log(editFeature)
+        editFeature.symbol = selectionSymbol;
+        sceneView.graphics.add(editFeature);
+      }
+    });
+  }
+
   render() {
     const options = {
       url: 'https://js.arcgis.com/4.6/'
@@ -174,7 +190,7 @@ class MapView extends Component {
              camera: {
                position: [-122.413, 37.767, 439.35],
                tilt: 0,
-               heading: 0
+               heading: 0,
              }
            });
 
@@ -383,6 +399,9 @@ class MapView extends Component {
              view.hitTest(screenPoint)
                .then(function(response){
                  this.exportQueryResults(response);
+                 var objectId = response.results[0].graphic.attributes.OBJECTID.toString()
+                 console.log(objectId)
+                 this.selectFeature(objectId, featureLayer, view, snowSymbol)
                }.bind(this));
            }.bind(this));
 
