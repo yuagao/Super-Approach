@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
+import TimeAgo from 'react-time-ago';
+import 'react-time-ago/Tooltip.css'
+
 
 class CommentCardView extends Component {
 
@@ -33,6 +36,8 @@ class CommentCardView extends Component {
           <span>Category: {this.props.data.Category}</span>
           <br/>
           <span>Content: {this.props.data.Content}</span>
+          <br/>
+          <span>Time: <TimeAgo>{this.props.data.Time}</TimeAgo></span>
           <br/>
           <span>Status: {this.props.data.Status}</span>
         </CardText>
