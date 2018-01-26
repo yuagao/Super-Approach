@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import TimeAgo from 'react-time-ago';
@@ -41,20 +41,22 @@ class CommentCardView extends Component {
           <br/>
           <span>Status: {this.props.data.Status}</span>
         </CardText>
-        <CardActions className="cardActions">
-          <FlatButton
-            label={"I feel the same (" + this.count.LikeIt+ ")" }
-            labelStyle={labelStyle}
-            icon={<FontIcon className="material-icons"> thumb_up</FontIcon>}
-            onClick={this.handleLikeClicked()}
+        { this.props.isActionDisplayed &&
+          <CardActions className="cardActions">
+            <FlatButton
+              label={"I feel the same (" + this.count.LikeIt+ ")" }
+              labelStyle={labelStyle}
+              icon={<FontIcon className="material-icons"> thumb_up</FontIcon>}
+              onClick={this.handleLikeClicked()}
+              />
+            <FlatButton
+              label={"I don't think so (" + this.count.DislikeIt+ ")" }
+              labelStyle={labelStyle}
+              icon={<FontIcon className="material-icons"> thumb_down</FontIcon>}
+              onClick={this.handleDislikeClicked()}
             />
-          <FlatButton
-            label={"I don't think so (" + this.count.DislikeIt+ ")" }
-            labelStyle={labelStyle}
-            icon={<FontIcon className="material-icons"> thumb_down</FontIcon>}
-            onClick={this.handleDislikeClicked()}
-          />
-        </CardActions>
+          </CardActions>
+        }
       </Card>
     );
   }

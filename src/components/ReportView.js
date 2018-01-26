@@ -13,7 +13,7 @@ import snow from '../images/snow_button.svg';
 import traffic from '../images/traffic_button.svg';
 import tree from '../images/tree_button.svg';
 
-class ReportView extends React.Component {
+class ReportView extends Component {
 z
   constructor(props) {
     super(props);
@@ -146,6 +146,7 @@ z
         <CommentCardView
           key={feature.attributes.OBJECTID.toString()}
           data={feature.attributes}
+          isActionDisplayed = {true}
           onCommentLike={this.handleCommentLike}
         />
       );
@@ -196,18 +197,19 @@ z
                   this.handleCategorySelected('Streets & Sidewalks')
                 }}>
                 <img src={car} />
+
                 <span>Streets & Sidewalks</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Sanitation')
                 }}>
-                <img src={dump} />
+              <img src={dump} />
                 <span>Sanitation</span>
               </span>
               <span onClick={() => {
                   this.handleCategorySelected('Winter Conditions')
                 }}>
-                <img src={snow} />
+              <img src={snow} />
                 <span>Winter Conditions</span>
               </span>
               <span onClick={() => {
@@ -240,7 +242,7 @@ z
           <div>
             <h3>Take Photo</h3>
             <div>
-              <img src={this.state.uploadImageUrl} />
+              <img src={this.state.uploadImageUrl} alt="Uploaded"/>
               <div onClick={this.handleUploadImageBtnClicked}> Upload Image</div>
               <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
             </div>
@@ -257,14 +259,17 @@ z
                 queryPoint={this.props.queryPoint}
                 onQueryResultsReturned={()=>{}}
                 onMapClicked={()=>{}}
+                hideFeatures={true}
               />
               <CommentCardView
                 data={this.currentSelection}
                 onCommentLike={()=>{}}
+                isActionDisplayed = {false}
               />
+              <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
             </div>
 
-            <RaisedButton label="next" onClick={this.handleConfirmClicked}/>
+
           </div>
         }
 

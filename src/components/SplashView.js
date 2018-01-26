@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import logo from '../images/logo.svg';
 
 
-class SplashView extends React.Component {
+class SplashView extends Component {
 
   constructor(props) {
     super(props);
