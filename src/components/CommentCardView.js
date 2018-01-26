@@ -17,12 +17,12 @@ class CommentCardView extends Component {
   }
 
   handleLikeClicked = () => {
-    this.count.LikeIt = this.count.LikeIt+ 1;
+    // this.count.LikeIt = this.count.LikeIt+ 1;
     // this.forceUpdate();
   }
 
   handleDislikeClicked = () => {
-    this.count.DislikeIt = this.count.DislikeIt+ 1;
+    // this.count.DislikeIt = this.count.DislikeIt+ 1;
     // this.forceUpdate();
   }
 
