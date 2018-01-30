@@ -1,7 +1,8 @@
 # ![Preview](src/images/owl.png)Super Approach
 
-A webapp prototype that leverages crowd-sourcing map information and enables citizens to report issues around the neighborhood, city, etc.
+A prototype that proposes the idea of leveraging crowd-sourcing map information and enabling citizens to report issues around the neighborhood, city, etc.
 
+This is a web application and is optimized for mobile experience. 
 
 ## Build & Run
 
