@@ -8,6 +8,7 @@ import SplashView from './SplashView';
 import MapView from './MapView';
 import MapUIView from './MapUIView';
 import ReportView from './ReportView';
+import AddNewView from './AddNewView';
 
 class App extends Component {
 
@@ -21,7 +22,12 @@ class App extends Component {
       },
       featuresAround: null,
       currentSelection: null,
-      pageStatus: 0
+      pageStatus: 0,
+      commentLiked: {
+        id: null,
+        like: null,
+        number: null
+      }
     }
     this.fakeCurrentLocation = {
       x: -122.413,
@@ -42,7 +48,6 @@ class App extends Component {
   }
 
   handleGetCurrentLocation = (point) => {
-    console.log(point);
     this.setState({
       pageStatus: 1
     })
@@ -76,8 +81,21 @@ class App extends Component {
     })
   }
 
-  handleCommentLike(id, isLike) {
+  handleCreateNewComment = () => {
+    this.setState({
+      pageStatus: 3
+    })
+  }
 
+
+  handleLikeComment = (id, isLike, number) => {
+    this.setState({
+      commentLiked: {
+        id: id,
+        like: isLike,
+        number: number
+      }
+    })
   }
 
   render() {
@@ -91,13 +109,16 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="page">
           { this.state.pageStatus === 0 &&
-            <SplashView onGetCurrentLocation={this.handleGetCurrentLocation}/>
+            <SplashView
+              onGetCurrentLocation={this.handleGetCurrentLocation}
+            />
           }
           { this.state.pageStatus === 1 &&
             <ReportView
               featuresAround = {this.state.featuresAround}
               onToggleToMapView = {this.handleToggleToMapView}
-              onCommentLike = {this.handleCommentLike}
+              onCreateNewComment = {this.handleCreateNewComment}
+              onLikeComment = {this.handleLikeComment}
               queryPoint = {this.state.queryPoint}
             />
           }
@@ -107,11 +128,19 @@ class App extends Component {
               onToggleToReportView = {this.handleToggleToReportView}
             />
           }
+          { this.state.pageStatus === 3 &&
+            <AddNewView
+              currentSelection = {this.state.currentSelection}
+              queryPoint = {this.state.queryPoint}
+              onToggleToReportView = {this.handleToggleToReportView}
+            />
+          }
           <MapView
             isDisplayed={(this.state.pageStatus === 2? true : false)}
             queryPoint={this.state.queryPoint}
             onQueryResultsReturned={this.handleQueryResultsReturned}
             onMapClicked={this.handleMapClicked}
+            commentLiked={this.state.commentLiked}
             hideFeatures={false}
           />
       </div>

@@ -15,24 +15,35 @@ class CommentCardView extends Component {
       LikeIt: this.props.data.LikeIt,
       DislikeIt: this.props.data.DislikeIt
     };
+    //UI flags
     this.likeBtnDisabled = false;
     this.likeBtnHighlight = false;
     this.dislikeBtnDisabled = false;
     this.dislikeBtnHighlight = false;
+    this.isClickable = true;
   }
 
   handleLikeClicked = () => {
-    this.count.LikeIt = this.count.LikeIt+ 1;
-    this.likeBtnHighlight = true;
-    this.dislikeBtnDisabled = true;
-    this.forceUpdate();
+    if (this.isClickable) {
+      this.count.LikeIt = this.count.LikeIt+ 1;
+      this.likeBtnHighlight = true;
+      this.dislikeBtnDisabled = true;
+      this.forceUpdate();
+      this.props.onLikeComment(this.props.data.OBJECTID, true, this.props.data.LikeIt + 1);
+      this.isClickable = false;
+    }
+
   }
 
   handleDislikeClicked = () => {
-    this.count.DislikeIt = this.count.DislikeIt+ 1;
-    this.dislikeBtnHighlight = true;
-    this.likeBtnDisabled = true;
-    this.forceUpdate();
+    if (this.isClickable) {
+      this.count.DislikeIt = this.count.DislikeIt+ 1;
+      this.dislikeBtnHighlight = true;
+      this.likeBtnDisabled = true;
+      this.forceUpdate();
+      this.props.onLikeComment(this.props.data.OBJECTID, false, this.props.data.DislikeIt + 1);
+      this.isClickable = false;
+    }
   }
 
   render() {
@@ -64,12 +75,7 @@ class CommentCardView extends Component {
               </div>
             </div>
             <div className="contentRight">
-              { this.props.data.Image &&
-                <img src={this.props.data.Image} alt="image"/>
-              }
-              { this.props.data.Image === '_' &&
-                <img src="https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" />
-              }
+              <img src={this.props.data.Image} alt="thumbnail"/>
             </div>
           </div>
         </CardText>

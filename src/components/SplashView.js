@@ -5,12 +5,11 @@ import background from '../images/bg.png';
 
 class SplashView extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    this.getlocation();
+    setTimeout(function(){
+      this.getlocation();
+    }.bind(this), 1500);
+
   }
 
   getlocation = () => {

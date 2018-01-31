@@ -45,16 +45,32 @@ class MapView extends Component {
       })
     }
 
-    if (nextProps.commentLike !== this.state.commentLike) {
-      this.updateComments(nextProps.commentLike);
+    if (nextProps.commentLiked !== this.state.commentLiked) {
+      this.updateComments(nextProps.commentLiked);
       this.setState({
-        commentLike: nextProps.commentLike
+        commentLiked: nextProps.commentLiked
       })
     }
   }
 
-  updateComments() {
-
+  updateComments(comment) {
+    let updateFeature;
+    if(comment.id){
+      if (comment.like){
+        updateFeature = {
+          objectId: comment.id,
+          LikeIt: comment.number
+        }
+      } else {
+        updateFeature = {
+          objectId: comment.id,
+          DislikeIt: comment.number
+        }
+      }
+    }
+    this.mapObjects.featureLayer.applyEdits({
+      updateFeatures:[updateFeature]
+    })
   }
 
   queryFeature(point) {
