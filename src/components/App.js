@@ -9,6 +9,7 @@ import MapView from './MapView';
 import MapUIView from './MapUIView';
 import ReportView from './ReportView';
 import AddNewView from './AddNewView';
+import StatusView from './StatusView';
 
 class App extends Component {
 
@@ -87,6 +88,12 @@ class App extends Component {
     })
   }
 
+  handleViewStatus = () => {
+    this.setState({
+      pageStatus: 4
+    })
+  }
+
 
   handleLikeComment = (id, isLike, number) => {
     this.setState({
@@ -118,6 +125,7 @@ class App extends Component {
               featuresAround = {this.state.featuresAround}
               onToggleToMapView = {this.handleToggleToMapView}
               onCreateNewComment = {this.handleCreateNewComment}
+              onViewStatus = {this.handleViewStatus}
               onLikeComment = {this.handleLikeComment}
               queryPoint = {this.state.queryPoint}
             />
@@ -126,6 +134,7 @@ class App extends Component {
             <MapUIView
               currentSelection = {this.state.currentSelection}
               onToggleToReportView = {this.handleToggleToReportView}
+              onLikeComment = {this.handleLikeComment}
             />
           }
           { this.state.pageStatus === 3 &&
@@ -133,6 +142,12 @@ class App extends Component {
               currentSelection = {this.state.currentSelection}
               queryPoint = {this.state.queryPoint}
               onToggleToReportView = {this.handleToggleToReportView}
+              onViewStatus = {this.handleViewStatus}
+            />
+          }
+          { this.state.pageStatus === 4 &&
+            <StatusView
+              onBackToReport = {this.handleToggleToReportView}
             />
           }
           <MapView

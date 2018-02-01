@@ -40,7 +40,9 @@ html,body, #root{
 }
 
 .commentCard {
+  position: relative;
   margin-bottom: 15px;
+  min-height: 123px;
   .owl{
     position: absolute;
     top: -23px;
@@ -289,7 +291,37 @@ html,body, #root{
 }
 
 
-
+#statusView{
+  background-size: 100%;
+  .headerContainer{
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  .title{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+    left: -24px;
+    width: 110px;
+    justify-content: space-between;
+  }
+  .progressBar{
+    height: 40px;
+    .highlightBar{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      span{
+        color: rgba(255,255,255,.9);
+        position: relative;
+        left: 20px;
+      }
+    }
+  }
+}
 
 
 

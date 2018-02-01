@@ -24,8 +24,8 @@ class MapUIView extends Component {
     this.props.onToggleToReportView();;
   }
 
-  handleCommentLike = () => {
-
+  handleLikeComment = (id, isLike, number) => {
+    this.props.onLikeComment(id, isLike, number);
   }
 
   render() {
@@ -38,8 +38,9 @@ class MapUIView extends Component {
           { this.state.currentSelection &&
             <CommentCardView
               data={this.state.currentSelection}
-              onCommentLike={this.handleCommentLike}
+              onLikeComment={this.handleLikeComment}
               isActionDisplayed={true}
+              isProgressDisplayed={false}
               cardMode={1}
             />
           }

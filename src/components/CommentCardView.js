@@ -50,9 +50,45 @@ class CommentCardView extends Component {
     const labelStyle = {
       fontSize: '12px'
     }
+    if (this.props.isProgressDisplayed) {
+      var progressBarStyle;
+      var highlightBarStyle;
+      switch (this.props.data.Progress) {
+        case 'new':
+          progressBarStyle = {
+            backgroundColor: 'rgba(248,159,27,.2)'
+          };
+          highlightBarStyle = {
+            backgroundColor: 'rgba(248,159,27,1)',
+            width: '20%'
+          };
+          break;
+        case 'in progress':
+          progressBarStyle = {
+            backgroundColor: 'rgba(50,113,127,.2)'
+          };
+          highlightBarStyle = {
+            backgroundColor: 'rgba(50,113,127,1)',
+            width: '80%'
+          };
+          break;
+        case 'done':
+          progressBarStyle = {
+            backgroundColor: 'rgba(76,108,76,1)'
+          };
+          highlightBarStyle = {
+            backgroundColor: 'rgba(76,108,76,1)',
+            width: '100%'
+          };
+          break;
+        default:
+          break;
+      }
+    }
+
     return (
       <Card className="commentCard">
-        { this.props.cardMode === 1 &&
+        { (this.props.cardMode === 1 || this.props.cardMode === 2)  &&
           <img className="owl" src={halfOwl} alt="owl"/>
         }
         <CardText>
@@ -98,6 +134,13 @@ class CommentCardView extends Component {
               disabled={this.dislikeBtnDisabled}
             />
           </CardActions>
+        }
+        { this.props.isProgressDisplayed &&
+          <div className="progressBar" style={progressBarStyle}>
+            <div className="highlightBar " style={highlightBarStyle}>
+              <span className="subHeader">{this.props.data.Progress} </span>
+            </div>
+          </div>
         }
       </Card>
     );

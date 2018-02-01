@@ -96,8 +96,12 @@ class AddNewView extends Component {
     };
   }
 
-  handleBackToList= () => {
+  handleBackToList = () => {
     this.props.onToggleToReportView();
+  }
+
+  handleViewStatus = () => {
+    this.props.onViewStatus();
   }
 
   getTimeNow() {
@@ -214,6 +218,7 @@ class AddNewView extends Component {
               data={this.currentSelection}
               onCommentLike={()=>{}}
               isActionDisplayed = {false}
+              isProgressDisplayed={false}
               cardMode={2}
             />
             <div className="bottomBar">
@@ -233,7 +238,7 @@ class AddNewView extends Component {
           </div>
           <div className="buttonContainer">
             <RaisedButton label="continue to browse" primary={true}  onClick={this.handleBackToList}/>
-            <RaisedButton label="track status"/>
+            <RaisedButton label="track status" onClick={this.handleViewStatus}/>
           </div>
         </div>
       }

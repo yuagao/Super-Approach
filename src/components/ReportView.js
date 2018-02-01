@@ -52,6 +52,10 @@ class ReportView extends Component {
     this.props.onCreateNewComment();
   }
 
+  handleViewStatus = () => {
+    this.props.onViewStatus();
+  }
+
 
   render() {
 
@@ -63,6 +67,7 @@ class ReportView extends Component {
           key={feature.attributes.OBJECTID.toString()}
           data={feature.attributes}
           isActionDisplayed = {true}
+          isProgressDisplayed={false}
           onLikeComment={this.handleLikeComment}
           cardMode={0}
         />
@@ -86,7 +91,7 @@ class ReportView extends Component {
               <FloatingActionButton onClick={this.handleAddNew} className='addBtn'>
                 <ContentAdd />
               </FloatingActionButton>
-              <FloatingActionButton className='orderBtn'>
+              <FloatingActionButton onClick={this.handleViewStatus} className='orderBtn'>
                 <i className="material-icons">track_changes</i>
               </FloatingActionButton>
               <div className="flex">
