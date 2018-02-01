@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CommentCardView from './CommentCardView'
 import MapView from './MapView';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import car from '../images/car_button.svg';
@@ -181,7 +182,17 @@ class AddNewView extends Component {
             </span>
           </div>
           <div className="bottomBar">
-            <RaisedButton label="back" onClick={this.handleBackToList}/>
+            <FlatButton onClick={this.handleBackToList}>
+              <i className="material-icons">chevron_left</i>
+              <span className="buttonLabel"> back </span>
+            </FlatButton>
+            <div className="stepIndicator">
+              <span className="current"> </span>
+              <span className="step"> </span>
+              <span className="step"> </span>
+            </div>
+            <FlatButton label=" " className="hidden">
+            </FlatButton>
           </div>
         </div>
       }
@@ -198,8 +209,19 @@ class AddNewView extends Component {
             />
           </div>
           <div className="bottomBar">
-            <RaisedButton label="back" onClick={this.handleProceedToCategory}/>
-            <RaisedButton label="next" onClick={this.handleProceedToCamera}/>
+            <FlatButton onClick={this.handleProceedToCategory}>
+              <i className="material-icons">chevron_left</i>
+              <span className="buttonLabel"> back </span>
+            </FlatButton>
+            <div className="stepIndicator">
+              <span className="step"> </span>
+              <span className="current"> </span>
+              <span className="step"> </span>
+            </div>
+            <FlatButton onClick={this.handleProceedToCamera}>
+              <span className="buttonLabel"> next </span>
+              <i className="material-icons">chevron_right</i>
+            </FlatButton>
           </div>
 
         </div>
@@ -213,7 +235,17 @@ class AddNewView extends Component {
             <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
           </div>
           <div className="bottomBar">
-            <RaisedButton label="back" onClick={this.handleCategorySelected}/>
+            <FlatButton onClick={this.handleCategorySelected}>
+              <i className="material-icons">chevron_left</i>
+              <span className="buttonLabel"> back </span>
+            </FlatButton>
+            <div className="stepIndicator">
+              <span className="step"> </span>
+              <span className="step"> </span>
+              <span className="current"> </span>
+            </div>
+            <FlatButton label=" " className="hidden">
+            </FlatButton>
           </div>
 
         </div>
@@ -225,8 +257,19 @@ class AddNewView extends Component {
               <img className="previewImage" src={this.state.uploadImageUrl} alt="thumbnail"/>
           </div>
           <div className="bottomBar">
-            <RaisedButton label="back" onClick={this.handleBackToCamera}/>
-            <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
+            <FlatButton onClick={this.handleBackToCamera}>
+              <i className="material-icons">chevron_left</i>
+              <span className="buttonLabel"> back </span>
+            </FlatButton>
+            <div className="stepIndicator">
+              <span className="step"> </span>
+              <span className="step"> </span>
+              <span className="current"> </span>
+            </div>
+            <FlatButton onClick={this.handleProceedToConfirm}>
+              <span className="buttonLabel"> next </span>
+              <i className="material-icons">chevron_right</i>
+            </FlatButton>
           </div>
         </div>
       }
@@ -249,8 +292,14 @@ class AddNewView extends Component {
               cardMode={2}
             />
             <div className="bottomBar">
-              <RaisedButton label="back" onClick={this.handleBackToCamera}/>
-              <RaisedButton label="confirm" onClick={this.handleConfirmClicked}/>
+              <FlatButton onClick={this.handleBackToCamera}>
+                <i className="material-icons">chevron_left</i>
+                <span className="buttonLabel"> back </span>
+              </FlatButton>
+              <FlatButton onClick={this.handleConfirmClicked}>
+                <span className="buttonLabel"> report </span>
+                <i className="material-icons">chevron_right</i>
+              </FlatButton>
             </div>
           </div>
 
