@@ -35,15 +35,31 @@ class AddNewView extends Component {
   }
 
   handleCategorySelected = (category) => {
-    this.currentSelection.Category = category
+    if (category){
+      this.currentSelection.Category = category
+    }
     this.setState({
       pageStatus: 1
     })
   }
 
-  handleProceedToCamera = (evt) => {
+  handleProceedToCategory = () => {
+    this.currentSelection.Category = null
+    this.setState({
+      pageStatus: 0
+    })
+  }
+
+  handleProceedToCamera = () => {
     const input = document.getElementById('descriptionInput');
     this.currentSelection.Content = input.value;
+    this.setState({
+      pageStatus: 2,
+      uploadImageUrl: null
+    })
+  }
+
+  handleBackToCamera = () => {
     this.setState({
       pageStatus: 2
     })
@@ -52,8 +68,6 @@ class AddNewView extends Component {
   handleUploadImageBtnClicked = () => {
     const input = document.getElementById('imageInput');
     input.click();
-    this.showPreviewImage = true;
-    this.forceUpdate();
   }
 
 
@@ -64,10 +78,10 @@ class AddNewView extends Component {
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         this.setState({
-          uploadImageUrl: e.target.result
+          uploadImageUrl: e.target.result,
+          pageStatus: 3
         })
       }
-
     }
   }
 
@@ -76,13 +90,13 @@ class AddNewView extends Component {
     this.currentSelection.Time = this.getTimeNow();
     console.log(this.currentSelection);
     this.setState({
-      pageStatus: 3
+      pageStatus: 4
     })
   }
 
   handleConfirmClicked = () => {
     this.setState({
-      pageStatus: 4
+      pageStatus: 5
     });
     this.currentSelection = {
       Category: null,
@@ -166,6 +180,9 @@ class AddNewView extends Component {
               <span>Trees & Parks</span>
             </span>
           </div>
+          <div className="bottomBar">
+            <RaisedButton label="back" onClick={this.handleBackToList}/>
+          </div>
         </div>
       }
 
@@ -181,6 +198,7 @@ class AddNewView extends Component {
             />
           </div>
           <div className="bottomBar">
+            <RaisedButton label="back" onClick={this.handleProceedToCategory}/>
             <RaisedButton label="next" onClick={this.handleProceedToCamera}/>
           </div>
 
@@ -191,20 +209,29 @@ class AddNewView extends Component {
         <div className="newCommentPage">
           <h1 className="header">A picture is worth a thousand words.</h1>
           <div>
-            { this.showPreviewImage &&
-              <img className="previewImage" src={this.state.uploadImageUrl} />
-            }
             <div id="uploadImageBtn" className="uploadImageBtn" onClick={this.handleUploadImageBtnClicked}> <img src={camera} alt="upload button"/></div>
             <input className="hidden" id="imageInput" type="file" accept="image/*" onChange={this.handleImageUpload}/>
           </div>
           <div className="bottomBar">
-            <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
+            <RaisedButton label="back" onClick={this.handleCategorySelected}/>
           </div>
 
         </div>
       }
 
       { this.state.pageStatus === 3 &&
+        <div className="newCommentPage">
+          <div className="previewImageContainer">
+              <img className="previewImage" src={this.state.uploadImageUrl} />
+          </div>
+          <div className="bottomBar">
+            <RaisedButton label="back" onClick={this.handleBackToCamera}/>
+            <RaisedButton label="next" onClick={this.handleProceedToConfirm}/>
+          </div>
+        </div>
+      }
+
+      { this.state.pageStatus === 4 &&
         <div style={styleHeight} className="newCommentPage thumbNailPage">
           <div className="thumbNailMap">
             <MapView
@@ -222,7 +249,8 @@ class AddNewView extends Component {
               cardMode={2}
             />
             <div className="bottomBar">
-              <RaisedButton label="confirm" primary={true} onClick={this.handleConfirmClicked}/>
+              <RaisedButton label="back" onClick={this.handleBackToCamera}/>
+              <RaisedButton label="confirm" onClick={this.handleConfirmClicked}/>
             </div>
           </div>
 
@@ -230,7 +258,7 @@ class AddNewView extends Component {
         </div>
       }
 
-      { this.state.pageStatus === 4 &&
+      { this.state.pageStatus === 5 &&
         <div className="newCommentPage thankPage">
           <div className="thankContainer">
             <img className = "owl" src={owl} alt="logo"/>

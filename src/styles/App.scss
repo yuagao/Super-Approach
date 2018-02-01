@@ -111,7 +111,7 @@ html,body, #root{
 
 #reportView {
   .welcomeContainer{
-    height: 170px;
+    height: 150px;
     justify-content: center;
     align-items: center;
     background-size: 100%;
@@ -126,7 +126,7 @@ html,body, #root{
     .subHeader{
       width: 250px;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 10px;
     }
     flex-direction: column;
   }
@@ -184,19 +184,19 @@ html,body, #root{
     align-items: center;
     &.thumbNailPage{
       padding-top: 0px;
-      .bottomBar{
-        padding: 0px;
-        bottom: 5px;
-        button {
-          width: 300px!important;
-        }
-      }
+      // .bottomBar{
+      //   padding: 0px;
+      //   bottom: 5px;
+      //   button {
+      //     width: 300px!important;
+      //   }
+      // }
     }
     .thumbNailMap{
       height: 100%;
       width: 100%;
       .show{
-        height: calc(100% - 170px)!important;
+        height: calc(100% - 200px)!important;
         width: 100%;
       }
     }
@@ -208,6 +208,9 @@ html,body, #root{
       width: 80%;
       margin: 0 auto;
       margin-bottom: 30px;
+    }
+    .previewImageContainer{
+      margin-top: 60px;
     }
     .previewImage{
       width: 360px;
@@ -222,7 +225,7 @@ html,body, #root{
       width: calc(100% - 40px);
       bottom: 20px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
     }
     .textFieldContainer{
       width: 80%;
