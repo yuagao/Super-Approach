@@ -222,7 +222,7 @@ class AddNewView extends Component {
       { this.state.pageStatus === 3 &&
         <div className="newCommentPage">
           <div className="previewImageContainer">
-              <img className="previewImage" src={this.state.uploadImageUrl} />
+              <img className="previewImage" src={this.state.uploadImageUrl} alt="thumbnail"/>
           </div>
           <div className="bottomBar">
             <RaisedButton label="back" onClick={this.handleBackToCamera}/>
