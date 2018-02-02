@@ -203,7 +203,7 @@ html,body, #root{
       margin-bottom: 15px;
     }
     .previewImageContainer{
-      margin-top: 60px;
+      margin-top: 50px;
     }
     .previewImage{
       width: 360px;
@@ -214,7 +214,7 @@ html,body, #root{
     .bottomBar{
       background: #F7F2E1;
       box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14), 0 3px 4px 0 rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
-      position: absolute;
+      position: fixed;
       height: 55px;
       padding: 0px 20px;
       width: calc(100% - 40px);
@@ -274,6 +274,7 @@ html,body, #root{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 60px;
     .category{
       width: 150px;
       height: 150px;
@@ -414,7 +415,7 @@ html,body, #root{
 }
 
 .buttonText{
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   color: rgba(0,0,0,0.87);
   letter-spacing: 0;
