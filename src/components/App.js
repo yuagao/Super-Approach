@@ -53,14 +53,20 @@ class App extends Component {
       pageStatus: 1
     })
     // Fake Location Info
-    setTimeout(()=>{
-      this.setState({
-        queryPoint:{
-          x: this.fakeCurrentLocation.x,
-          y: this.fakeCurrentLocation.y
-        }
-      })
-    },2000);
+    // setTimeout(()=>{
+    //   this.setState({
+    //     queryPoint:{
+    //       x: this.fakeCurrentLocation.x,
+    //       y: this.fakeCurrentLocation.y
+    //     }
+    //   })
+    // },0);
+    this.setState({
+      queryPoint:{
+        x: this.fakeCurrentLocation.x,
+        y: this.fakeCurrentLocation.y
+      }
+    })
 
   }
 

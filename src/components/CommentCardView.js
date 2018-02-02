@@ -10,6 +10,7 @@ import 'react-time-ago/Tooltip.css'
 class CommentCardView extends Component {
 
   constructor(props) {
+    //card mode: 0 for list, 1 for map view, 2 for new comment, 3 for status
     super(props);
     this.count = {
       LikeIt: this.props.data.LikeIt,
@@ -97,15 +98,13 @@ class CommentCardView extends Component {
               <span className="category">{this.props.data.Category}</span>
               <span className="content">{this.props.data.Content}</span>
               <div className="flex">
-                { this.props.cardMode === 0 &&
+                { (this.props.cardMode === 0 || this.props.cardMode === 1) &&
                   <span className="time">
                     <TimeAgo>{this.props.data.Time}</TimeAgo>
                   </span>
                 }
-                { this.props.cardMode === 1 &&
-                  <span className="time">
-                    <TimeAgo>{this.props.data.Time}</TimeAgo>
-                  </span>
+                { (this.props.cardMode === 2 || this.props.cardMode === 3) &&
+                  <span className="time">Today</span>
                 }
                 <span className="status">{this.props.data.Status}</span>
               </div>

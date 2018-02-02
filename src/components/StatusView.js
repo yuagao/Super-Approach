@@ -45,7 +45,7 @@ class StatusView extends Component {
         data={feature}
         isActionDisplayed = {false}
         isProgressDisplayed={true}
-        cardMode={0}
+        cardMode={3}
       />
     );
 

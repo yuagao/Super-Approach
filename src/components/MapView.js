@@ -68,9 +68,11 @@ class MapView extends Component {
         }
       }
     }
-    this.mapObjects.featureLayer.applyEdits({
-      updateFeatures:[updateFeature]
-    })
+    if (this.mapObjects.featureLayer !== null){
+      this.mapObjects.featureLayer.applyEdits({
+        updateFeatures:[updateFeature]
+      })
+    }
   }
 
   queryFeature(point) {
