@@ -130,7 +130,8 @@ class AddNewView extends Component {
   render() {
 
     const styleHeight = {
-      height: '100%'
+      height: '100%',
+      backgroundImage:"url(" + background + ")"
     };
 
     const bgStyle = {
@@ -138,9 +139,9 @@ class AddNewView extends Component {
     };
 
     return (
-      <div id="addNewView" className="subPage" style={bgStyle}>
+      <div id="addNewView" className="subPage">
       { this.state.pageStatus === 0 &&
-        <div className="newCommentPage">
+        <div className="newCommentPage" style={bgStyle}>
           <h1 className="header">Which category would you like to report?</h1>
           <div className="categoryList">
             <span className="category" onClick={() => {
@@ -198,7 +199,7 @@ class AddNewView extends Component {
       }
 
       { this.state.pageStatus === 1 &&
-        <div className="newCommentPage">
+        <div className="newCommentPage" style={bgStyle}>
           <h1 className="header">Please describe your issue.</h1>
           <div className="textFieldContainer">
             <TextField
@@ -228,7 +229,7 @@ class AddNewView extends Component {
       }
 
       { this.state.pageStatus === 2 &&
-        <div className="newCommentPage">
+        <div className="newCommentPage" style={bgStyle}>
           <h1 className="header">A picture is worth a thousand words.</h1>
           <div>
             <div id="uploadImageBtn" className="uploadImageBtn" onClick={this.handleUploadImageBtnClicked}> <img src={camera} alt="upload button"/></div>
@@ -252,7 +253,7 @@ class AddNewView extends Component {
       }
 
       { this.state.pageStatus === 3 &&
-        <div className="newCommentPage">
+        <div className="newCommentPage" style={bgStyle}>
           <div className="previewImageContainer">
               <img className="previewImage" src={this.state.uploadImageUrl} alt="thumbnail"/>
           </div>
@@ -308,7 +309,7 @@ class AddNewView extends Component {
       }
 
       { this.state.pageStatus === 5 &&
-        <div className="newCommentPage thankPage">
+        <div className="newCommentPage thankPage" style={bgStyle}>
           <div className="thankContainer">
             <img className = "owl" src={owl} alt="logo"/>
             <h1 className="header">Thank you for your contribution! </h1>
