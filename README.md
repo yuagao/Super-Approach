@@ -2,7 +2,9 @@
 
 A prototype that proposes the idea of enabling citizens to report issues around their neighborhood by leveraging crowd sourcing and mapping technology. 
 
-This is a web application and is optimized for mobile experience. 
+This is a web application and is optimized for mobile experience.
+
+Live demo: https://yuagao.github.io/super-approach/
 
 ## Build & Run
 
